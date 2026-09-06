@@ -72,8 +72,36 @@ import { products } from "@/data/products";
 }
 */
 
-export default function HomePage() {
-  const featured = products.filter((product) => product.featured);
+// export default function HomePage() {
+//   const featured = products.filter((product) => product.featured);
+
+//   return (
+//     <>
+//       <HeroCarousel />
+
+//       <section className="mx-auto max-w-6xl px-4 py-16">
+//         <h2 className="text-2xl font-semibold">Featured Sarees</h2>
+//         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+//           {featured.map((product) => (
+//             <ProductCard key={product.id} product={product} />
+//           ))}
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
+
+export default async function HomePage() {
+  const response = await fetch(
+    "http://127.0.0.1:8000/api/catalog/",
+    { cache: "no-store" }
+  );
+
+  const products = await response.json();
+
+  const featured = products.filter(
+    (product: any) => product.featured
+  );
 
   return (
     <>
@@ -81,9 +109,13 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-semibold">Featured Sarees</h2>
+
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {featured.map((product: any) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
           ))}
         </div>
       </section>

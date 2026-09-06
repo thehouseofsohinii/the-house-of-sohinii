@@ -2,6 +2,19 @@ Development of e-commerce website for The House of Sohinii
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Frontend setup
+cd frontend
+npm install
+npm run dev
+
+## Backend setup
+cd backend
+python -m venv venv
+source venv/bin/activate for MacOS and venv\Scripts\activate for Windows
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
